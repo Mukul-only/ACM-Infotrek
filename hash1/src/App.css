@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+.audio-icon-button {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  z-index: 4200;
+}
+
+.cosmic-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@theme {
+  --color-dark: #18171e;
+  --color-a: #cdbfda;
+  --color-background: #1c1c1c;
+  --color-txt: #ababab;
+  --color-bdr: #393939;
+}
+
+.grad {
+  background-image: linear-gradient(
+    64deg,
+    rgba(255, 255, 255, 1) 42%,
+    rgb(74, 74, 74) 100%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.grad_1 {
+  background: linear-gradient(
+    44deg,
+    rgba(108, 108, 112, 1) 0%,
+    rgba(255, 255, 255, 1) 45%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Styles for the creative button effect */
+.button-creative-effect {
+  /* Renamed to avoid potential conflicts and be more specific */
+  position: relative;
+  display: inline-flex; /* Use inline-flex for better alignment of inner content */
+  align-items: center; /* Align icon and text vertically */
+  justify-content: center; /* Align icon and text horizontally */
+  /* padding: 1em 2em; /* We'll use padding from your existing button */
+  background: #27272a; /* A slightly lighter dark for base, or use your existing button's base */
+  color: white;
+  border: none;
+  cursor: pointer;
+  overflow: hidden; /* Crucial for the ::before effect */
+  /* font-size: 1.2rem; /* We'll use font size from your existing button */
+  /* border-radius: 8px; /* We'll use border-radius from your existing button */
+  z-index: 1; /* Ensures button content is above default stacking */
+  -webkit-tap-highlight-color: transparent; /* Good for mobile, prevents blue tap highlight */
+  transition: color 0.3s ease-in-out; /* Text color transition */
+}
+
+.button-creative-effect::before {
+  content: "";
+  position: absolute;
+  /* --x and --y will be set by JavaScript */
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 150px; /* Adjust size as needed for your button */
+  height: 150px; /* Adjust size as needed for your button */
+  background: radial-gradient(circle, #00ffc3 10%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Smoother transition */
+  border-radius: 50%;
+  opacity: 0; /* Start fully transparent */
+  pointer-events: none; /* Important: lets clicks pass through */
+  z-index: -1; /* Places the glow behind the button's content */
+}
+
+.button-creative-effect:hover::before {
+  transform: translate(-50%, -50%) scale(1.2); /* Scale up */
+  opacity: 0.6; /* Fade in */
+}
+
+/* Target the text span for color change */
+.button-creative-effect:hover .button-text-glow {
+  color: #00ffc3; /* Glow color for text */
+}
+
+/* Make sure the Join icon also changes color if it's an SVG that inherits color */
+.button-creative-effect:hover .button-text-glow svg {
+  fill: #00ffc3; /* For SVGs that use fill */
+  stroke: #00ffc3; /* For SVGs that use stroke, if applicable */
+}

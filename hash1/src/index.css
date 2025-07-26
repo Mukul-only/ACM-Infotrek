@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  background-color: #242424;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Adjust width as needed */
+  height: 12px; /* Adjust height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Makes the track fully transparent */
+  /* If you want a very subtle track color instead of full transparency: */
+  /* background: rgba(200, 200, 200, 0.1); */ /* Example: very light grey, 10% opacity */
+  border-radius: 6px; /* Optional: rounds the non-visible track area, can be useful if you add a subtle bg */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black; /* The main color of the thumb */
+  border-radius: 6px; /* Rounded corners for the thumb */
+  /* The border for the thumb.
+     Choose a border color that will be visible against your page content,
+     since the track behind it is transparent.
+     A light color works well if your page backgrounds are generally dark,
+     and a darker color if your page backgrounds are light.
+  */
+  border: 2px solid #555555; /* Example: A medium-dark gray border */
+  /* Or, for a lighter border if page content is dark: */
+  /* border: 2px solid #cccccc; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333333; /* Darker black or different color on hover */
+  /* Optionally change border color on hover too */
+  /* border-color: #777777; */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin; /* Or "auto" or "none" */
+
+  /* thumb-color (black) track-color (transparent) */
+  /* IMPORTANT FOR FIREFOX:
+     Firefox's `scrollbar-color` property does NOT support a separate border for the thumb.
+     The "border" effect you see will be the contrast between the black thumb
+     and whatever content is visible through the transparent track area.
+     You cannot define a distinct border color for the thumb like in WebKit.
+  */
+  scrollbar-color: #393939 transparent;
+}

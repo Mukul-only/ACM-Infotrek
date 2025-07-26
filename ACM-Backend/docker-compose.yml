@@ -1,0 +1,64 @@
+# version: '3.8'
+
+# services:
+#   redis:
+#     image: redis:latest
+#     container_name: redis_server
+#     ports:
+#       - "6379:6379"
+#     # volumes:
+#     #   - redis_data:/data    # Uncomment if you want to persist data
+
+#   backend:
+#     build: .
+#     ports:
+#       - "3000:3000"    # App port
+#       - "9229:9229"    # Debug port
+#     volumes:
+#       - .:/usr/src/app
+#       - /usr/src/app/node_modules
+#     environment:
+#       - NODE_ENV=development
+#       - PORT=3000
+#       - MONGO_URI=${MONGO_URI}
+#       - JWT_SECRET=${JWT_SECRET}
+#       - EMAIL_USER=${EMAIL_USER}
+#       - EMAIL_PASS=${EMAIL_PASS}
+#       - CHOKIDEAR_USEPOLLING=true
+#     command: npm run dev -- --inspect=0.0.0.0:9229
+#     depends_on:
+#       - redis
+
+# ACM-Backend/docker-compose.yml
+# --- MODIFIED FOR MONGODB ATLAS ---
+
+version: "3.8"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data # Persist Redis data
+
+  backend:
+    build: .
+    container_name: backend_app
+    ports:
+      - "3000:3000" # App port
+      - "9229:9229" # Debug port
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    command: npm run dev
+    # The backend now only depends on Redis
+    depends_on:
+      - redis
+
+# We only need a volume for Redis data now
+volumes:
+  redis_data:

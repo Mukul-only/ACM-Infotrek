@@ -1,0 +1,57 @@
+/* Global reset - you might already have this in your project's main CSS (e.g., index.css) */
+/* If so, you can remove it from here to avoid redundancy. */
+/* * {
+    padding: 0;
+    margin: 0;
+} */
+
+.starry-sky-main {
+  /* Renamed from .main to be more specific and avoid conflicts */
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Or pass height as a prop if you want more flexibility */
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden; /* Important to keep stars within bounds */
+}
+
+.star-group {
+  position: absolute;
+  width: 100%; /* Take full width of parent */
+  height: 100%; /* Take full height for positioning stars within it */
+  left: 0;
+}
+
+.star {
+  background: white;
+  position: absolute;
+  border-radius: 5px; /* Adjusted for better appearance of small stars */
+}
+
+.big-star {
+  width: 5px;
+  height: 5px;
+  animation: changePositionStar 5s linear infinite;
+}
+
+.average-star {
+  width: 3px;
+  height: 3px;
+  animation: changePositionStar 10s linear infinite;
+}
+
+.small-star {
+  width: 1px;
+  height: 1px;
+  animation: changePositionStar 15s linear infinite;
+}
+
+@keyframes changePositionStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(
+      var(--translateY)
+    ); /* This will be set by the component */
+  }
+}

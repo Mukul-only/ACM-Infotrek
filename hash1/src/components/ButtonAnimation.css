@@ -1,0 +1,23 @@
+/* ButtonCursorFollow.css */
+.cursor-follow-btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Container for the moving text */
+.text-container {
+  transition: transform 0.2s ease; /* Smooth transition for text movement */
+  width: 100%;
+  text-align: center;
+}
+
+/* Add hover detection area around buttons */
+.btn-hover-area {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  pointer-events: none; /* Make sure this doesn't interfere with other elements */
+}
