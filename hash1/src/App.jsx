@@ -114,7 +114,7 @@ function App() {
     <>
       {isLoading && (
         <div
-          className={`fixed inset-0 z-[9999] transition-opacity duration-400 ease-out ${
+          className={`fixed inset-0 z-[9999] transition-opacity duration-300 ease-out ${
             fadeOutLoading ? "opacity-0" : "opacity-100"
           }`}
         >
